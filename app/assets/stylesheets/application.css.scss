@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "style.scss";
+
+.navbar-default .navbar-nav > li > a {
+  color:white !important;
+}
+
+div.row.item {
+  width: 33%;
+  display: inline;
+}
