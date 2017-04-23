@@ -6,7 +6,7 @@ class CreateMovies < ActiveRecord::Migration[5.0]
       t.string :overview
       t.date :release_date
       # t.string :genre_ids
-      t.integer :id
+      t.integer :id_original
       t.string :original_title
       t.string :original_language
       t.string :backdrop_path
