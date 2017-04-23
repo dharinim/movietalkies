@@ -363,11 +363,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
+                    <h2 class="section-heading">Login/Register</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
-            <div class="row">
+                <p id="notice"><%= notice %></p>
+                <h1>Login</h1>
+              <%= form_for(:session, url: login_path) do |f| %>
+
+                <div class="form-group">
+                  <%= f.label :email %>
+                  <%= f.text_field :email, class: "form-control", :placeholder => "Email name" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password %>
+                  <%= f.password_field :password, class: "form-control", :placeholder => "Password" %>
+                </div>
+
+                <%= f.submit 'login', class: "btn btn-primary"%>
+              <% end %> 
+            
+              <h1>SignUp</h1>
+
+              <%= render 'form', user: @user %>
+            <!-- <div class="row">
                 <div class="col-lg-12">
                     <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row">
@@ -399,7 +419,8 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
+            
         </div>
     </section>
 

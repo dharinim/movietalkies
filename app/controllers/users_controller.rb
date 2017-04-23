@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = User.new
   end
   
   def show
@@ -21,13 +22,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      # session[:user_id] = @user.id
-      # redirect_to '/'
-      # flash[:success] = "Welcome"
-      redirect_to @user, notice: 'User was successfully created.'
+      respond_to do |format|
+        puts "REANDING ************"
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.js { render json: {:first_name => @user.first_name }}
+      end
     else
-      # redirect_to '/signup'
-      render 'new'
+      render html: '<div>DAATA not saved</div>'.html_safe
     end
   end
   
