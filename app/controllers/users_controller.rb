@@ -6,6 +6,26 @@ class UsersController < ApplicationController
 
   def index
     @user = User.new
+    @recent_reviews = Review.order(review_date: :desc).limit(6)
+    # @poster
+    # @movie_name
+    # @review 
+    @movie_details = {
+      name: [],
+      poster: [],
+      review: []
+    }
+    for i in 0..@recent_reviews.length-1
+      p "printing movie_details"
+      movie = Movie.find(@recent_reviews[i].movie_id)
+      movie_name = movie.original_title
+      movie_poster = movie.poster_path
+      p movie_name, movie_poster
+      @movie_details[:name] << movie_name
+      @movie_details[:poster] << movie_poster
+      @movie_details[:review] << @recent_reviews[i].comment
+      p @movie_details
+    end
   end
   
   def show
