@@ -13,6 +13,7 @@ class SearchController < ApplicationController
 
     respond_to do |format|
       format.js { render json: {:results => res}}
+      format.json { render json: {:results => res}}
     end
   #   # Call themoviedb and get data
   #     <script type="text/javascript">
