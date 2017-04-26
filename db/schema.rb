@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423174652) do
+ActiveRecord::Schema.define(version: 20170426172306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170423174652) do
     t.integer  "vote_average"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "the_movie_db_id"
   end
 
   create_table "reviews", force: :cascade do |t|
