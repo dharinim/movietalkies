@@ -43,6 +43,10 @@ $(document).ready(function(){
     //     alert("sdF");
     // });
     
+    $(".reviewMe").click(function (e, obj) {
+      var image = $(this).parent().parent().find(".img-responsive_new").attr("src");
+    });
+
     $("#testme").submit(function (e) {
       e.preventDefault();
       $.ajax({
@@ -53,6 +57,51 @@ $(document).ready(function(){
         }
       })
     });
+
+    var ratingInfo = {};
+
+    $("#ratingMsg").hide();
+    $("#reviewForm").submit(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: "/review",
+        dataType: "html",
+        method: "POST",
+        data: {
+          ratingInfo: ratingInfo,
+          reviewText: $("#reviewText").val()
+        },
+        success: function (data) {
+          //alert(data);
+          $("#ratingMsg").show({
+            duration: 1000
+          });
+          setTimeout(function (){
+            $("#ratingMsg").hide({
+              duration: 1000
+            });
+          }, 5000);
+        }
+      })
+    });
+    
+    $("#ratingContainer").starRating({
+        totalStars: 5,
+        starShape: 'rounded',
+        starSize: 40,
+        emptyColor: 'lightgray',
+        hoverColor: '#fed136',
+        activeColor: 'green',
+        useGradient: false,
+        disableAfterRate: false,
+        callback: function(currentRating, er) {
+          alert(currentRating);
+          ratingInfo = {
+            movieId: $("#randomReviewMovieId").val(),
+            rating: currentRating
+          }
+        }
+    })
 
       // $("#testme").submit(function (e) {
       //     e.preventDefault();
