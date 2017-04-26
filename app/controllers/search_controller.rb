@@ -7,62 +7,42 @@ class SearchController < ApplicationController
   end
 
   def search
-    query = "beauty"
+    query = params["q"]
     response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=bd68c036b87d2a4e8c836f04dd3a0a75&page=1&query='+ query)
     res = JSON.parse(response.body)
 
-    respond_to do |format|
-      format.js { render json: {:results => res}}
-      format.json { render json: {:results => res}}
+    @movies_list = []
+    image_basepath = "https://image.tmdb.org/t/p/w300"
+    
+
+    max_limit = 9;
+
+    if res["results"]
+        results = res["results"]
+
+        results.each do |result|
+            @movies_list.push({
+              poster: image_basepath + result["poster_path"],
+              original_title: result["original_title"]
+            })
+
+            if @movies_list.length > max_limit - 1
+              break
+            end
+        end
     end
+
+    # IF sorting required
+    # @search_movies = sort_by(@search_movies, params["key"])
+
+
+
+    # respond_to do |format|
+    #   format.js { render json: {:results => @movies_list}}
+    #   format.json { render json: {:results => @movies_list}}
+    # end
   #   # Call themoviedb and get data
-  #     <script type="text/javascript">
-  #       $(document).on("turbolinks:load", ready);
-  #       $(document).ready(ready);
-
-
-  #       function ready(){
-  #           $.ajax({
-  #             url: '/search',
-  #           }).done(function (result){
-  #             console.log(result);
-
-  #             # $('#calendar').fullCalendar({
-  #             #   header: {
-  #             #     left: 'prev,next today',
-  #             #     center: 'title',
-  #             #     right: 'month,agendaWeek,agendaDay,listWeek'
-  #             #   },
-  #             #   navLinks: true, // can click day/week names to navigate views
-  #             #   editable: true,
-  #             #   eventLimit: true, // allow "more" link when too many events
-  #             #   events: result,
-  #             #   eventDrop: function(event, delta, revertFunc) {
-  #             #     var new_date = event.start.format('YYYY-MM-DD HH:mm:ss');
-  #             #     var id = event.id;
-  #             #     var postData = {
-  #             #       new_date: new_date,
-  #             #       appointment_id: id
-  #             #     };
-  #             #     updateAppointmentData(postData);
-  #             #   }
-  #             # });
-  #           });
-  #       }
-
-
-  #       # function updateAppointmentData(postData) {
-  #       #   $.ajax({
-  #       #     url: '/appointments',
-  #       #     method: 'POST',
-  #       #     dataType: "json",
-  #       #     contentType: "application/json; charset=utf-8",
-  #       #     data: JSON.stringify(postData),
-  #       #   }).done(function (res) {
-            
-  #       #   });
-  #       # }
-  # </script>
+    render :search, :layout => false
   end
 
   def create

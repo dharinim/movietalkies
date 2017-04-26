@@ -9,7 +9,7 @@ RSpec.describe SearchController, type: :controller do
               :success    => true
       }.to_json
 
-      HTTParty.stub(:get) { {:body => @themoviedbdata.to_json} }
+      url("https://api.themoviedb.org/3/search/movie?") { {:body => @themoviedbdata.to_json} }
     end
 
     it "gets serach results from themoviedb" do

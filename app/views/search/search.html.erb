@@ -1,0 +1,18 @@
+<% if @movies_list!= nil %>
+    <% @movies_list.each do |movie| %> 
+        <div class="col-md-4 col-sm-6 portfolio-item">
+            <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                <div class="portfolio-hover">
+                    <div class="portfolio-hover-content">
+                        <i class="fa fa-plus fa-3x"></i>
+                    </div>
+                </div>
+                <%= image_tag movie[:poster], :class =>"img-responsive_new" %>
+            </a>
+            <div class="portfolio-caption">
+                <h4><%= movie[:original_title] %></h4>
+                <p class="text-muted">Add a review</p>
+            </div>
+        </div>
+    <% end %>
+<% end %>

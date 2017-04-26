@@ -18,8 +18,10 @@
 $.ajaxSettings.dataType = "json";
 $(document).ready(function(){
     $("#new_user").submit(function(e){
-    e.preventDefault();
-    
+      e.preventDefault();
+    });
+
+
     $("#new_user").on("ajax:success", function (e, data, status, xhr){
       console.log("success")
       $("#new_user")[0].reset();
@@ -37,7 +39,42 @@ $(document).ready(function(){
     });
 
  
-  });
+    // $("#testme").on("ajax:success", function (e, data, status, xhr) {
+    //     alert("sdF");
+    // });
+    
+    $("#testme").submit(function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: "/search?q="+ $("#searchQuery").val(),
+        dataType: "html",
+        success: function (data) {
+          $("#searchResults").html(data);
+        }
+      })
+    });
+
+      // $("#testme").submit(function (e) {
+      //     e.preventDefault();
+      //     $(ajax).get({
+      //       url: "/search",
+      //     }).on("success", function(e, data) {
+      //       //if html
+      //       //$("#newdiv").html(data);
+
+      //       // if json
+      //       content = ""
+      //       for (i=0;i<data.ength; i++) {
+      //           content = content + "<tr>" + data[pi] + "</tr>"
+
+      //       }
+
+
+
+      //       $("#newdiv").html(content)
+      //     })
+      // });
+  
   // .done(function(){console.log("dfsfsdf")
 
   //   $(this)[0].reset();
