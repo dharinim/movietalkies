@@ -85,90 +85,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
+                <% @movie_details.each_with_index do |movie_detail, index| %>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a href="<%= "#portfolioModal" + (index + 1).to_s %>" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
                             </div>
+                            <%= image_tag movie_detail[:poster], :class =>"img-responsive_new" %>
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4><%= movie_detail[:name] %></h4>
+                            <p class="text-muted"><%= movie_detail[:review] %></p>
                         </div>
-                        <%= image_tag @movie_details[:poster][0], :class =>"img-responsive_new" %>
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4><%= @movie_details[:name][0] %></h4>
-                        <p class="text-muted"><%= @movie_details[:review][0] %></p>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <%= image_tag @movie_details[:poster][1], :class =>"img-responsive_new" %>
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4><%= @movie_details[:name][1] %></h4>
-                        <p class="text-muted"><%= @movie_details[:review][1] %></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <%= image_tag @movie_details[:poster][2], :class =>"img-responsive_new" %>
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4><%= @movie_details[:name][2] %></h4>
-                        <p class="text-muted"><%= @movie_details[:review][2] %></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <%= image_tag @movie_details[:poster][3], :class =>"img-responsive_new" %>
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4><%= @movie_details[:name][3] %></h4>
-                        <p class="text-muted"><%= @movie_details[:review][3] %></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <%= image_tag @movie_details[:poster][4], :class =>"img-responsive_new" %>   
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4><%= @movie_details[:name][4] %></h4>
-                        <p class="text-muted"><%= @movie_details[:review][4] %></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <%= image_tag @movie_details[:poster][5], :class =>"img-responsive_new" %>
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4><%= @movie_details[:name][5] %></h4>
-                        <p class="text-muted"><%= @movie_details[:review][5] %></p>
-                    </div>
-                </div>
+                <% end %>
             </div>
         </div>
     </section>

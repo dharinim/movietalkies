@@ -7,22 +7,20 @@ class UsersController < ApplicationController
   def index
     @user = User.new
     @recent_reviews = Review.order(id: :desc).limit(6)
-    @movie_details = {
-      name: [],
-      poster: [],
-      review: []
-    }
 
     @randomMovie = Movie.order("RANDOM()").limit(1)[0]
     @movies_list = search_movie_list
 
+    @movie_details = []
     for i in 0..@recent_reviews.length-1
       movie = Movie.find(@recent_reviews[i].movie_id)
       movie_name = movie.original_title
       movie_poster = movie.poster_path
-      @movie_details[:name] << movie_name
-      @movie_details[:poster] << movie_poster
-      @movie_details[:review] << @recent_reviews[i].comment
+      @movie_details << {
+        name: movie_name,
+        poster: movie_poster,
+        review: @recent_reviews[i].comment
+      }
     end
   end
   
