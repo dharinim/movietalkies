@@ -13,7 +13,6 @@
 tmp
 /vendor/*
 log
-Gemfile.lock
 !/log/.keep
 !/tmp/.keep
 
