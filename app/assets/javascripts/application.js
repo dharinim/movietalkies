@@ -27,16 +27,16 @@ $(document).ready(function(){
       $("#new_user")[0].reset();
     });
 
-    $("#new_user").on("ajax:error", function (e, data, status, xhr){
-      console.log("error")
-      $("#new_user")[0].reset();
-    });
+    // $("#new_user").on("ajax:error", function (e, data, status, xhr){
+    //   console.log("error")
+    //   $("#new_user")[0].reset();
+    // });
 
 
-    $("#new_user").on("ajax:complete", function (e, data, status, xhr){
-      console.log("complete")
-      $("#new_user")[0].reset();
-    });
+    // $("#new_user").on("ajax:complete", function (e, data, status, xhr){
+    //   console.log("complete")
+    //   $("#new_user")[0].reset();
+    // });
 
  
     // $("#testme").on("ajax:success", function (e, data, status, xhr) {
@@ -44,7 +44,12 @@ $(document).ready(function(){
     // });
     
     $(".reviewMe").click(function (e, obj) {
-      var image = $(this).parent().parent().find(".img-responsive_new").attr("src");
+      var imageURL = $(this).parent().parent().find(".img-responsive_new").attr("src");
+      var movieID = $(this).parent().parent().find("#movieListId").val();
+      $("#randomReviewMovieId").val(movieID);
+      $("#currentReviewPoster").attr("src", imageURL);
+      // $(this).scrollTop($("#about").position().top;
+      
     });
 
     $("#testme").submit(function (e) {

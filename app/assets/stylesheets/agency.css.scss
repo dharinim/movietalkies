@@ -252,9 +252,10 @@ header .intro-text .intro-heading {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 0px;
   line-height: 50px;
   margin-bottom: 25px;
+  color: #fed136
 }
 @media (min-width: 768px) {
   header .intro-text {
@@ -272,7 +273,7 @@ header .intro-text .intro-heading {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 75px;
+    font-size: 35px;
     line-height: 75px;
     margin-bottom: 50px;
   }

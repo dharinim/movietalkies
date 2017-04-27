@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   include SessionsHelper
   include SearchHelper
 
-  before_action :require_user, only: [:index, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
