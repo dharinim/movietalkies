@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A movie review website with the following features
 
-Things you may want to cover:
+1) Search for a movie you would like to review
+2) Login/ Register to rate and review the movie
+3) Read the latest reviews about movies
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
