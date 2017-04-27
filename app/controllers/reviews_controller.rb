@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
     puts params
     user = current_user
 
+    if user.nil?
+      return render :unauthorized, :layout => false, :status => 401
+    end
+
     Review.create(
       rating: ratingInfo["rating"],
       comment: reviewText,
@@ -18,11 +22,3 @@ class ReviewsController < ApplicationController
     render :new, :layout => false
   end
 end
-
-    Review.create(
-      rating: 1,
-      comment: "234",
-      movie_id: 1,
-      user_id: 1,
-      review_date: Time.now.to_s(:db)
-    )

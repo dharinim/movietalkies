@@ -15,6 +15,16 @@
   font-family: helvetica, arial, verdana;
 }
 
+#unauthorizedMsg {
+  font-size: 18px;
+  color: red;  
+}
+
+#ratingMsg {
+  font-size: 18px;
+  color: green;
+}
+
 .jq-star {
   width: 100px;
   height: 100px;
@@ -40,4 +50,8 @@
 .jq-shadow {
   -webkit-filter: drop-shadow( -2px -2px 2px #888 );
   filter: drop-shadow( -2px -2px 2px #888 );
+}
+
+.reviewMe {
+  margin-bottom: 17px;
 }

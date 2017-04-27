@@ -63,7 +63,7 @@
                       <div class="form-group">
                         <%= text_field_tag :searchQuery, nil, class: 'form-control', :type => "text", :placeholder => "movie name" %>
                       </div>
-                      <%= submit_tag "Search and Review", class: "btn-lg btn-primary" %>
+                      <%= submit_tag "Search and Review", id: "searchButton", class: "btn-lg btn-primary", data: { disable_with: "Please wait..." } %>
                     <% end %>
                 </div>
             </div>
@@ -190,6 +190,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             <h6 id="ratingMsg">Your rating has been created</h6>
+                            <h6 id="unauthorizedMsg">Please login to review the movie</h6>
                         </div>
                         <div class="row">
                             <h6>Please provide a rating between 1-5</h6>
@@ -233,7 +234,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Login/Register</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Unlock the ability to review movies.</h3>
                 </div>
             </div>
                 <p id="notice"><%= notice %></p>

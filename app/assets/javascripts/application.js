@@ -25,6 +25,7 @@ $(document).ready(function(){
     $("#new_user").on("ajax:success", function (e, data, status, xhr){
       console.log("success")
       $("#new_user")[0].reset();
+      alert("Your account has been created. Please login");
     });
 
     // $("#new_user").on("ajax:error", function (e, data, status, xhr){
@@ -66,6 +67,7 @@ $(document).ready(function(){
         dataType: "html",
         success: function (data) {
           $("#searchResults").html(data);
+          $("#searchButton").removeAttr("disabled").attr('value', 'SEARCH AND REVIEW');
           // Rebind review action
           $(".reviewMe").click(function (e1, obj) {
             e1.preventDefault();
@@ -79,11 +81,7 @@ $(document).ready(function(){
             $('body').animate({
                     scrollTop: posi + 920
                 }, 1000);
-
-            
-            
           });
-
         }
       })
     });
@@ -91,6 +89,7 @@ $(document).ready(function(){
     var ratingInfo = {};
 
     $("#ratingMsg").hide();
+    $("#unauthorizedMsg").hide();
     $("#reviewForm").submit(function (e) {
       e.preventDefault();
       $.ajax({
@@ -111,6 +110,18 @@ $(document).ready(function(){
               duration: 1000
             });
           }, 5000);
+        },
+        statusCode: {
+          401: function() {
+            $("#unauthorizedMsg").show({
+              duration: 1000
+            });
+            setTimeout(function (){
+              $("#unauthorizedMsg").hide({
+                duration: 1000
+              });
+            }, 5000);
+          }
         }
       })
     });
@@ -125,7 +136,6 @@ $(document).ready(function(){
         useGradient: false,
         disableAfterRate: false,
         callback: function(currentRating, er) {
-          alert(currentRating);
           ratingInfo = {
             movieId: $("#randomReviewMovieId").val(),
             rating: currentRating
