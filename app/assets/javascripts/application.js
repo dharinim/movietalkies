@@ -48,8 +48,15 @@ $(document).ready(function(){
       var movieID = $(this).parent().parent().find("#movieListId").val();
       $("#randomReviewMovieId").val(movieID);
       $("#currentReviewPoster").attr("src", imageURL);
+
+            var elem = $("#about");
+            var posi = elem.offset().top-elem.innerHeight();
+            $('body').animate({
+                    scrollTop: posi + 920
+                }, 1000);
+
+
       // $(this).scrollTop($("#about").position().top;
-      
     });
 
     $("#testme").submit(function (e) {
@@ -59,6 +66,24 @@ $(document).ready(function(){
         dataType: "html",
         success: function (data) {
           $("#searchResults").html(data);
+          // Rebind review action
+          $(".reviewMe").click(function (e1, obj) {
+            e1.preventDefault();
+            var imageURL = $(this).parent().parent().find(".img-responsive_new").attr("src");
+            var movieID = $(this).parent().parent().find("#movieListId").val();
+            $("#randomReviewMovieId").val(movieID);
+            $("#currentReviewPoster").attr("src", imageURL);
+            
+            var elem = $("#about");
+            var posi = elem.offset().top-elem.innerHeight();
+            $('body').animate({
+                    scrollTop: posi + 920
+                }, 1000);
+
+            
+            
+          });
+
         }
       })
     });
