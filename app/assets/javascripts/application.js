@@ -27,22 +27,6 @@ $(document).ready(function(){
       $("#new_user")[0].reset();
       alert("Your account has been created. Please login");
     });
-
-    // $("#new_user").on("ajax:error", function (e, data, status, xhr){
-    //   console.log("error")
-    //   $("#new_user")[0].reset();
-    // });
-
-
-    // $("#new_user").on("ajax:complete", function (e, data, status, xhr){
-    //   console.log("complete")
-    //   $("#new_user")[0].reset();
-    // });
-
- 
-    // $("#testme").on("ajax:success", function (e, data, status, xhr) {
-    //     alert("sdF");
-    // });
     
     $(".reviewMe").click(function (e, obj) {
       var imageURL = $(this).parent().parent().find(".img-responsive_new").attr("src");
@@ -50,14 +34,11 @@ $(document).ready(function(){
       $("#randomReviewMovieId").val(movieID);
       $("#currentReviewPoster").attr("src", imageURL);
 
-            var elem = $("#about");
-            var posi = elem.offset().top-elem.innerHeight();
-            $('body').animate({
-                    scrollTop: posi + 920
-                }, 1000);
-
-
-      // $(this).scrollTop($("#about").position().top;
+      var elem = $("#about");
+      var posi = elem.offset().top-elem.innerHeight();
+      $('body').animate({
+              scrollTop: posi + 920
+          }, 1000);
     });
 
     $("#testme").submit(function (e) {
@@ -142,46 +123,4 @@ $(document).ready(function(){
           }
         }
     })
-
-      // $("#testme").submit(function (e) {
-      //     e.preventDefault();
-      //     $(ajax).get({
-      //       url: "/search",
-      //     }).on("success", function(e, data) {
-      //       //if html
-      //       //$("#newdiv").html(data);
-
-      //       // if json
-      //       content = ""
-      //       for (i=0;i<data.ength; i++) {
-      //           content = content + "<tr>" + data[pi] + "</tr>"
-
-      //       }
-
-
-
-      //       $("#newdiv").html(content)
-      //     })
-      // });
-  
-  // .done(function(){console.log("dfsfsdf")
-
-  //   $(this)[0].reset();
-  // });
-    // $("#new_user").on("ajax:success", function (e, data, status, xhr){
-  //     console.log("jhbjkhk")
-  //   $("#new_user")[0].reset();
-  // });
 });
-
-// $.ajaxSettings.dataType = "json";
-// $(document).ready(function (){
-//   $("#new_attendance").on("ajax:success", function (e, data, status, xhr){
-//     $('#ateendee-list').append($("<li>" + data.first_name + "</li>"));
-//     $("#attendance-add").hide()
-//   });
-//   $("#new_attendance").on("ajax:error", function (e, xhr, status, error){
-//     alert(error);
-//   });
-// })
-

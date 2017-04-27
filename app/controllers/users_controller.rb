@@ -7,9 +7,6 @@ class UsersController < ApplicationController
   def index
     @user = User.new
     @recent_reviews = Review.order(id: :desc).limit(6)
-    # @poster
-    # @movie_name
-    # @review 
     @movie_details = {
       name: [],
       poster: [],
@@ -20,15 +17,12 @@ class UsersController < ApplicationController
     @movies_list = search_movie_list
 
     for i in 0..@recent_reviews.length-1
-      p "printing movie_details"
       movie = Movie.find(@recent_reviews[i].movie_id)
       movie_name = movie.original_title
       movie_poster = movie.poster_path
-      p movie_name, movie_poster
       @movie_details[:name] << movie_name
       @movie_details[:poster] << movie_poster
       @movie_details[:review] << @recent_reviews[i].comment
-      p @movie_details
     end
   end
   
@@ -72,17 +66,6 @@ class UsersController < ApplicationController
   def search
     query = "beauty"
     @movies_list = search_movie_list(query)
-
-    # IF sorting required
-    # @search_movies = sort_by(@search_movies, params["key"])
-
-
-
-    # respond_to do |format|
-    #   format.js { render json: {:results => res}}
-    #   format.json { render json: {:results => res}}
-    # end
-  #   # Call themoviedb and get data
     render :index, layout: false
   end
 
@@ -93,8 +76,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    p "printing params"
-    p params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 

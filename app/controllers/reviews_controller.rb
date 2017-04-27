@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   def create
     ratingInfo = params["ratingInfo"]
     reviewText = params["reviewText"]
-    puts params
+
     user = current_user
 
     if user.nil?
